@@ -29,8 +29,24 @@ struct User {
     let isActive: Bool
     let email: String
     
-    static func parse(_: NSDictionary?) -> User{
-        return User(username: "", firstName: "", lastName: "", isStaff: true, isActive: true, email: "")
+    static func parse(dictionary: NSDictionary!) -> User{
+        var username: String = ""
+        var firstName: String = ""
+        var lastName: String = ""
+        var isStaff: Bool = false
+        var isActive: Bool = false
+        var email: String = ""
+        
+        if let parsedUser = dictionary {
+            username = parsedUser["username"] as! String
+            firstName = parsedUser["first_name"] as! String
+            lastName = parsedUser["last_name"] as! String
+            isStaff = parsedUser["is_staff"] as! Bool
+            isActive = parsedUser["is_active"] as! Bool
+            email = parsedUser["email"] as! String
+        }
+        
+        return User(username: username, firstName: firstName, lastName: lastName, isStaff: isStaff, isActive: isActive, email: email)
     }
 }
 
@@ -45,7 +61,7 @@ class ViewController: UIViewController {
             response in
             self.parseData(JSONData: response.data!)
             let cardPicked = self.pickRandomCard(array: self.cards)
-            print(cardPicked)
+            print(cardPicked.createdBy.email)
         })
     }
 
@@ -61,8 +77,8 @@ class ViewController: UIViewController {
                 let isTitleVisible = item["is_title_visible"] as! Bool
                 let image = item["image"] as? String
                 let secondaryText = item["secondary_text"] as? String
-                let createdBy = User.parse(item["created_by"] as? NSDictionary)
-                let updatedBy = User.parse(item["updated_by"] as? NSDictionary)
+                let createdBy = User.parse(dictionary: item["created_by"] as? NSDictionary)
+                let updatedBy = User.parse(dictionary: item["updated_by"] as? NSDictionary)
                 let author = item["author"] as! String
                 cards.append(Card.init(id: cardId, title: title, isTitleVisible: isTitleVisible, text: text, secondaryText: secondaryText, image: image, createdBy: createdBy, updatedBy: updatedBy, author: author))
                 
