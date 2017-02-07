@@ -9,16 +9,34 @@
 import UIKit
 import Alamofire
 
-struct card {
+struct Card {
     let id: Int!
-    let title: String!
-    let is_title_visible: Bool!
-    let text: String!
+    let title: String
+    let isTitleVisible: Bool
+    let text: String
+    let secondaryText: String?
+    let image: String?
+    let createdBy: User
+    let updatedBy: User
+    let author: String
+}
+
+struct User {
+    let username: String
+    let firstName: String
+    let lastName: String
+    let isStaff: Bool
+    let isActive: Bool
+    let email: String
+    
+    static func parse(_: NSDictionary?) -> User{
+        return User(username: "", firstName: "", lastName: "", isStaff: true, isActive: true, email: "")
+    }
 }
 
 class ViewController: UIViewController {
     
-    var cards = [card]()
+    var cards = [Card]()
     
     typealias JSONStandar = [AnyObject]
     
@@ -37,20 +55,26 @@ class ViewController: UIViewController {
             let items = readableJSON
             for i in 0..<items.count{
                 let item = items[i]
-                let card_id = item["id"] as! Int
+                let cardId = item["id"] as! Int
                 let title = item["title"] as! String
                 let text = item["text"] as! String
-                let is_title_visible = item["is_title_visible"] as! Bool
-                cards.append(card.init(id: card_id, title: title, is_title_visible: is_title_visible, text: text))
+                let isTitleVisible = item["is_title_visible"] as! Bool
+                let image = item["image"] as? String
+                let secondaryText = item["secondary_text"] as? String
+                let createdBy = User.parse(item["created_by"] as? NSDictionary)
+                let updatedBy = User.parse(item["updated_by"] as? NSDictionary)
+                let author = item["author"] as! String
+                cards.append(Card.init(id: cardId, title: title, isTitleVisible: isTitleVisible, text: text, secondaryText: secondaryText, image: image, createdBy: createdBy, updatedBy: updatedBy, author: author))
+                
             }
         } catch {
             print(error)
         }
     }
     
-    func pickRandomCard(array: Array<Any>) -> AnyObject {
+    func pickRandomCard(array: Array<Card>) -> Card {
         let randomNumber = Int(arc4random_uniform(UInt32(array.count)))
-        return array[randomNumber] as AnyObject
+        return array[randomNumber]
     }
     
     override func viewDidLoad() {
