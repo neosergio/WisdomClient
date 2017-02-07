@@ -12,6 +12,7 @@ import Alamofire
 struct card {
     let id: Int!
     let title: String!
+    let is_title_visible: Bool!
     let text: String!
 }
 
@@ -39,7 +40,8 @@ class ViewController: UIViewController {
                 let card_id = item["id"] as! Int
                 let title = item["title"] as! String
                 let text = item["text"] as! String
-                cards.append(card.init(id: card_id, title: title, text: text))
+                let is_title_visible = item["is_title_visible"] as! Bool
+                cards.append(card.init(id: card_id, title: title, is_title_visible: is_title_visible, text: text))
             }
         } catch {
             print(error)
