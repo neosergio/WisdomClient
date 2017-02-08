@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  WisdomClient
@@ -12,6 +13,11 @@ import Alamofire
 class ViewController: UIViewController {
     
     var cards = [Card]()
+    var cardPicked: Card!
+    let swipeRecognizer = UISwipeGestureRecognizer()
+    
+    @IBOutlet weak var mainAuthor: UILabel!
+    @IBOutlet weak var mainText: UILabel!
     
     typealias JSONStandar = [AnyObject]
     
@@ -19,8 +25,7 @@ class ViewController: UIViewController {
         Alamofire.request(url).responseJSON(completionHandler: {
             response in
             self.parseData(JSONData: response.data!)
-            let cardPicked = self.pickRandomCard(array: self.cards)
-            print(cardPicked.createdBy.email)
+            self.populateView()
         })
     }
 
@@ -44,12 +49,26 @@ class ViewController: UIViewController {
         return array[randomNumber]
     }
     
+    func swipedDetected(_ gesture: UIGestureRecognizer){
+       populateView()
+    }
+    
+    func populateView(){
+        self.cardPicked = self.pickRandomCard(array: self.cards)
+        self.mainAuthor.text = self.cardPicked.author
+        self.mainText.text = self.cardPicked.text
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let cardsURL = "\(Constants.mainURL)cards/"
-        print(cardsURL)
         callAlamo(url: cardsURL)
+        self.mainAuthor.text = ""
+        self.mainText.text = ""
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
+        swipe.direction = UISwipeGestureRecognizerDirection.down
+        self.view.addGestureRecognizer(swipe)
     }
 
     override func didReceiveMemoryWarning() {
