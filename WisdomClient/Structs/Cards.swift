@@ -42,23 +42,16 @@ struct User {
     let isActive: Bool
     let email: String
     
-    static func parse(dictionary: NSDictionary!) -> User{
-        var username: String = ""
-        var firstName: String = ""
-        var lastName: String = ""
-        var isStaff: Bool = false
-        var isActive: Bool = false
-        var email: String = ""
-        
-        if let parsedUser = dictionary {
-            username = parsedUser["username"] as! String
-            firstName = parsedUser["first_name"] as! String
-            lastName = parsedUser["last_name"] as! String
-            isStaff = parsedUser["is_staff"] as! Bool
-            isActive = parsedUser["is_active"] as! Bool
-            email = parsedUser["email"] as! String
+    static func parse(dictionary: NSDictionary?) -> User{
+        guard let parsedUser = dictionary else {
+            return User(username: "", firstName: "", lastName: "", isStaff: false, isActive: false, email: "")
         }
-        
+        let username = parsedUser["username"] as! String
+        let firstName = parsedUser["first_name"] as! String
+        let lastName = parsedUser["last_name"] as! String
+        let isStaff = parsedUser["is_staff"] as! Bool
+        let isActive = parsedUser["is_active"] as! Bool
+        let email = parsedUser["email"] as! String
         return User(username: username, firstName: firstName, lastName: lastName, isStaff: isStaff, isActive: isActive, email: email)
     }
 }
