@@ -358,9 +358,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DAEFECC3A0B8D7CD9BE25908 /* Pods-WisdomClient.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6H9C6HXSKA;
 				INFOPLIST_FILE = WisdomClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neosergio.WisdomClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -372,9 +374,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4BFAFE6DC184CAF9EAF84117 /* Pods-WisdomClient.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6H9C6HXSKA;
 				INFOPLIST_FILE = WisdomClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neosergio.WisdomClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
