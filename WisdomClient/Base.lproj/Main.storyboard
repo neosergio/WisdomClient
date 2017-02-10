@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,8 +19,25 @@
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EJ3-NM-M19">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EJ3-NM-M19" secondAttribute="height" multiplier="40:71" id="e5b-3A-F29"/>
+                                </constraints>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbS-fO-MDV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uOz-uO-3sR">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WbS-fO-MDV" secondAttribute="height" multiplier="40:71" id="cVd-wg-ehI"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lL2-ql-E8S">
                                 <rect key="frame" x="10" y="199" width="300" height="170.5"/>
                                 <subviews>
@@ -32,13 +49,13 @@
                                         </constraints>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacus tortor, accumsan eu libero non, dictum ultrices est. Nunc quis ultricies augue. Aenean non elementum sapien. Suspendisse turpis duis.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOh-NR-TMH">
                                         <rect key="frame" x="0.0" y="150" width="300" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -46,18 +63,25 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="WbS-fO-MDV" firstAttribute="leading" secondItem="EJ3-NM-M19" secondAttribute="leading" id="AMp-c7-leM"/>
                             <constraint firstItem="lL2-ql-E8S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fnn-vr-yR4"/>
+                            <constraint firstItem="EJ3-NM-M19" firstAttribute="centerY" secondItem="lL2-ql-E8S" secondAttribute="centerY" id="Hek-0w-ama"/>
+                            <constraint firstItem="EJ3-NM-M19" firstAttribute="centerX" secondItem="lL2-ql-E8S" secondAttribute="centerX" id="L8Q-17-KgM"/>
+                            <constraint firstItem="WbS-fO-MDV" firstAttribute="top" secondItem="EJ3-NM-M19" secondAttribute="top" id="LOw-Ng-3t8"/>
+                            <constraint firstItem="EJ3-NM-M19" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lIE-1T-A1P"/>
+                            <constraint firstItem="WbS-fO-MDV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="omY-gx-GrB"/>
                             <constraint firstItem="lL2-ql-E8S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xLO-A2-dkw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainAuthor" destination="xOh-NR-TMH" id="iB9-Tg-fua"/>
+                        <outlet property="mainImage" destination="EJ3-NM-M19" id="ASX-QV-Iuc"/>
                         <outlet property="mainText" destination="h1e-0h-7Pg" id="qJK-Is-ZTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-365.60000000000002" y="-22.03898050974513"/>
+            <point key="canvasLocation" x="-365.625" y="-22.183098591549296"/>
         </scene>
     </scenes>
 </document>

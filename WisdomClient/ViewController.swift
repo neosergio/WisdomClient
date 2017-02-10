@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mainAuthor: UILabel!
     @IBOutlet weak var mainText: UILabel!
+    @IBOutlet weak var mainImage: UIImageView!
     
     typealias JSONStandar = [AnyObject]
     
@@ -57,6 +58,13 @@ class ViewController: UIViewController {
         self.cardPicked = self.pickRandomCard(array: self.cards)
         self.mainAuthor.text = self.cardPicked.author
         self.mainText.text = self.cardPicked.text
+        
+        // Getting image from url
+        let imageURL = URL(string: (self.cardPicked.image)!)
+        let imageData = NSData(contentsOf: imageURL! as URL)
+        self.mainImage.image = UIImage(data: imageData! as Data)
+        
+        
     }
     
     override func viewDidLoad() {
