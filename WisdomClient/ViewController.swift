@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var cards = [Card]()
     var cardPicked: Card!
     let swipeRecognizer = UISwipeGestureRecognizer()
+    var activityBoxView = UIView()
     
     @IBOutlet weak var mainAuthor: UILabel!
     @IBOutlet weak var mainText: UILabel!
@@ -64,11 +65,36 @@ class ViewController: UIViewController {
         let imageData = NSData(contentsOf: imageURL! as URL)
         self.mainImage.image = UIImage(data: imageData! as Data)
         
+        // Remove activity indicator
+        self.activityBoxView.removeFromSuperview()
         
+        
+    }
+    
+    func addDownloadDataView() {
+        activityBoxView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25, width: 175, height: 35))
+        activityBoxView.alpha = 0.8
+        activityBoxView.layer.cornerRadius = 10
+        
+        let activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityView.frame = CGRect(x: 135, y: -10, width: 50, height: 50)
+        activityView.color = UIColor.white
+        activityView.startAnimating()
+        
+        let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+        textLabel.textColor = UIColor.white
+        textLabel.font = UIFont(name: textLabel.font.fontName, size: 13)
+        textLabel.text = "Checking for Update..."
+        
+        activityBoxView.addSubview(activityView)
+        activityBoxView.addSubview(textLabel)
+        
+        view.addSubview(activityBoxView)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addDownloadDataView()
         // Do any additional setup after loading the view, typically from a nib.
         let cardsURL = "\(Constants.mainURL)cards/"
         callAlamo(url: cardsURL)
