@@ -55,6 +55,10 @@ class ViewController: UIViewController {
        populateView()
     }
     
+    func tapDetected(_ gesture: UIGestureRecognizer){
+        populateView()
+    }
+    
     func populateView(){
         self.cardPicked = self.pickRandomCard(array: self.cards)
         self.mainAuthor.text = self.cardPicked.author
@@ -78,11 +82,11 @@ class ViewController: UIViewController {
         
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         activityView.frame = CGRect(x: 135, y: -10, width: 50, height: 50)
-        activityView.color = UIColor.white
+        activityView.color = UIColor.black
         activityView.startAnimating()
         
         let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
-        textLabel.textColor = UIColor.white
+        textLabel.textColor = UIColor.black
         textLabel.font = UIFont(name: textLabel.font.fontName, size: 13)
         textLabel.text = "Checking for Update..."
         
@@ -100,9 +104,14 @@ class ViewController: UIViewController {
         callAlamo(url: cardsURL)
         self.mainAuthor.text = ""
         self.mainText.text = ""
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
-        swipe.direction = UISwipeGestureRecognizerDirection.down
-        self.view.addGestureRecognizer(swipe)
+        
+        // This is for swipe gesture
+        //let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
+        //swipe.direction = UISwipeGestureRecognizerDirection.down
+        
+        // This is for tap gesture
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDetected(_:)))
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
