@@ -28,15 +28,15 @@
                                 </constraints>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbS-fO-MDV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="200" width="320" height="180"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uOz-uO-3sR">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="WbS-fO-MDV" secondAttribute="height" multiplier="40:71" id="cVd-wg-ehI"/>
+                                    <constraint firstAttribute="width" secondItem="WbS-fO-MDV" secondAttribute="height" multiplier="40:71" constant="218.59154929577466" id="cVd-wg-ehI"/>
                                 </constraints>
-                                <blurEffect style="dark"/>
+                                <blurEffect style="extraLight"/>
                             </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lL2-ql-E8S">
                                 <rect key="frame" x="10" y="199" width="300" height="170.5"/>
@@ -49,13 +49,12 @@
                                         </constraints>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacus tortor, accumsan eu libero non, dictum ultrices est. Nunc quis ultricies augue. Aenean non elementum sapien. Suspendisse turpis duis.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOh-NR-TMH">
                                         <rect key="frame" x="0.0" y="150" width="300" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -67,9 +66,9 @@
                             <constraint firstItem="lL2-ql-E8S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fnn-vr-yR4"/>
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="centerY" secondItem="lL2-ql-E8S" secondAttribute="centerY" id="Hek-0w-ama"/>
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="centerX" secondItem="lL2-ql-E8S" secondAttribute="centerX" id="L8Q-17-KgM"/>
-                            <constraint firstItem="WbS-fO-MDV" firstAttribute="top" secondItem="EJ3-NM-M19" secondAttribute="top" id="LOw-Ng-3t8"/>
+                            <constraint firstItem="WbS-fO-MDV" firstAttribute="top" secondItem="EJ3-NM-M19" secondAttribute="top" constant="200" id="LOw-Ng-3t8"/>
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lIE-1T-A1P"/>
-                            <constraint firstItem="WbS-fO-MDV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="omY-gx-GrB"/>
+                            <constraint firstItem="WbS-fO-MDV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-188" id="omY-gx-GrB"/>
                             <constraint firstItem="lL2-ql-E8S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xLO-A2-dkw"/>
                         </constraints>
                     </view>
