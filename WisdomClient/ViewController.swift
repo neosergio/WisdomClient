@@ -65,9 +65,13 @@ class ViewController: UIViewController {
         self.mainText.text = self.cardPicked.text
         
         // Getting image from url
-        let imageURL = URL(string: (self.cardPicked.image)!)
-        let imageData = NSData(contentsOf: imageURL! as URL)
-        self.mainImage.image = UIImage(data: imageData! as Data)
+        if self.cardPicked.image != nil {
+            let imageURL = URL(string: (self.cardPicked.image!))
+            let imageData = NSData(contentsOf: imageURL! as URL)
+            self.mainImage.image = UIImage(data: imageData! as Data)
+        } else {
+            self.mainImage.image = nil
+        }
         
         // Remove activity indicator
         self.activityBoxView.removeFromSuperview()
