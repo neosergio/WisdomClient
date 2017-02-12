@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,28 +18,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EJ3-NM-M19">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="-0.5" y="-0.5" width="376" height="667.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EJ3-NM-M19" secondAttribute="height" multiplier="40:71" id="e5b-3A-F29"/>
                                 </constraints>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbS-fO-MDV">
-                                <rect key="frame" x="0.0" y="200" width="320" height="180"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uOz-uO-3sR">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="WbS-fO-MDV" secondAttribute="height" multiplier="40:71" constant="218.59154929577466" id="cVd-wg-ehI"/>
-                                </constraints>
-                                <blurEffect style="extraLight"/>
-                            </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lL2-ql-E8S">
-                                <rect key="frame" x="10" y="199" width="300" height="170.5"/>
+                                <rect key="frame" x="37.5" y="248.5" width="300" height="170.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="758" preservesSuperviewLayoutMargins="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h1e-0h-7Pg">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
@@ -58,17 +47,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.046772837529804434" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="WbS-fO-MDV" firstAttribute="leading" secondItem="EJ3-NM-M19" secondAttribute="leading" id="AMp-c7-leM"/>
                             <constraint firstItem="lL2-ql-E8S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fnn-vr-yR4"/>
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="centerY" secondItem="lL2-ql-E8S" secondAttribute="centerY" id="Hek-0w-ama"/>
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="centerX" secondItem="lL2-ql-E8S" secondAttribute="centerX" id="L8Q-17-KgM"/>
-                            <constraint firstItem="WbS-fO-MDV" firstAttribute="top" secondItem="EJ3-NM-M19" secondAttribute="top" constant="200" id="LOw-Ng-3t8"/>
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lIE-1T-A1P"/>
-                            <constraint firstItem="WbS-fO-MDV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-188" id="omY-gx-GrB"/>
                             <constraint firstItem="lL2-ql-E8S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xLO-A2-dkw"/>
                         </constraints>
                     </view>
