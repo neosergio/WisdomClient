@@ -26,8 +26,17 @@ class ViewController: UIViewController {
     func callAlamo(url: String){
         Alamofire.request(url).responseJSON(completionHandler: {
             response in
-            self.parseData(JSONData: response.data!)
-            self.populateView()
+            switch response.result {
+            case .success( _):
+                self.parseData(JSONData: response.data!)
+                self.populateView()
+            case .failure(let error):
+                let alertController = UIAlertController(title: "Error", message: "Can't get information, please reopen application", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                print(error)
+            }
+
         })
     }
 
