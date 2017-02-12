@@ -10,4 +10,7 @@ import Foundation
 
 struct Constants {
     static let mainURL : String = "https://wisdomhappybox.herokuapp.com/api/"
+    static let infoText : String = "Tap and tap again to get geek wisdom."
+    static let copyrightText : String = "© All copyrights belong to their respective owners. Images and text owned by other copyright holders, these images and text are not intended to generate income for the author of this application."
+    
 }

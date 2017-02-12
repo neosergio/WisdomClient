@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     let swipeRecognizer = UISwipeGestureRecognizer()
     var activityBoxView = UIView()
     
+    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var mainAuthor: UILabel!
     @IBOutlet weak var mainText: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
             case .success( _):
                 self.parseData(JSONData: response.data!)
                 self.populateView()
+                self.infoButton.isHidden = false
             case .failure(let error):
                 let alertController = UIAlertController(title: "Error", message: "Can't get information, please reopen application", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -85,7 +87,6 @@ class ViewController: UIViewController {
         // Remove activity indicator
         self.activityBoxView.removeFromSuperview()
         
-        
     }
     
     func addDownloadDataView() {
@@ -109,12 +110,17 @@ class ViewController: UIViewController {
         view.addSubview(activityBoxView)
     }
     
+    func infoButtonPressed() {
+        print("presed")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addDownloadDataView()
         // Do any additional setup after loading the view, typically from a nib.
         let cardsURL = "\(Constants.mainURL)cards/"
         callAlamo(url: cardsURL)
+        self.infoButton.isHidden = true
         self.mainAuthor.text = ""
         self.mainText.text = ""
         
@@ -122,6 +128,13 @@ class ViewController: UIViewController {
         //let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
         //swipe.direction = UISwipeGestureRecognizerDirection.down
         //self.view.addGestureRecognizer(swipe)
+        
+        // Add info button
+        //let infoButton = UIButton(type: UIButtonType.infoDark)
+        //infoButton.frame = CGRect(x: view.frame.maxX - 30, y: 30, width: 16, height: 16)
+        //infoButton.addTarget(self, action: #selector(infoButtonPressed), for: UIControlEvents.touchUpInside)
+        //self.view.addSubview(infoButton)
+        
         
         // This is for tap gesture
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDetected(_:)))

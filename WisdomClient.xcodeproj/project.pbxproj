@@ -15,6 +15,8 @@
 		4940C15C1E47BDD8002FED5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4940C15A1E47BDD8002FED5F /* Main.storyboard */; };
 		4940C1691E48994A002FED5F /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940C1681E48994A002FED5F /* Constans.swift */; };
 		4940C1711E4A9DE4002FED5F /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940C1701E4A9DE4002FED5F /* Cards.swift */; };
+		49DB0C881E50F4AA00F9F5C5 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB0C871E50F4AA00F9F5C5 /* DesignableView.swift */; };
+		49DB0C8A1E50F7F900F9F5C5 /* InforViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB0C891E50F7F900F9F5C5 /* InforViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		4940C1621E47BDD8002FED5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4940C1681E48994A002FED5F /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constans.swift; path = Util/Constans.swift; sourceTree = "<group>"; };
 		4940C1701E4A9DE4002FED5F /* Cards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cards.swift; path = Structs/Cards.swift; sourceTree = "<group>"; };
+		49DB0C871E50F4AA00F9F5C5 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DesignableView.swift; path = Util/DesignableView.swift; sourceTree = "<group>"; };
+		49DB0C891E50F7F900F9F5C5 /* InforViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InforViewController.swift; sourceTree = "<group>"; };
 		4BFAFE6DC184CAF9EAF84117 /* Pods-WisdomClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WisdomClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-WisdomClient/Pods-WisdomClient.release.xcconfig"; sourceTree = "<group>"; };
 		81C15621618F1580422998C9 /* Pods_WisdomClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WisdomClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAEFECC3A0B8D7CD9BE25908 /* Pods-WisdomClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WisdomClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WisdomClient/Pods-WisdomClient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 				4940C16A1E489994002FED5F /* Util */,
 				4940C1561E47BDD8002FED5F /* AppDelegate.swift */,
 				4940C1581E47BDD8002FED5F /* ViewController.swift */,
+				49DB0C891E50F7F900F9F5C5 /* InforViewController.swift */,
 				4940C15A1E47BDD8002FED5F /* Main.storyboard */,
 				49100FE81E50977C006426D5 /* Launch Screen.storyboard */,
 				4940C1621E47BDD8002FED5F /* Info.plist */,
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				4940C1681E48994A002FED5F /* Constans.swift */,
+				49DB0C871E50F4AA00F9F5C5 /* DesignableView.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -237,7 +243,9 @@
 				4940C1711E4A9DE4002FED5F /* Cards.swift in Sources */,
 				4940C1591E47BDD8002FED5F /* ViewController.swift in Sources */,
 				4940C1571E47BDD8002FED5F /* AppDelegate.swift in Sources */,
+				49DB0C881E50F4AA00F9F5C5 /* DesignableView.swift in Sources */,
 				4940C1691E48994A002FED5F /* Constans.swift in Sources */,
+				49DB0C8A1E50F7F900F9F5C5 /* InforViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
