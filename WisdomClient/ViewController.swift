@@ -108,6 +108,7 @@ class ViewController: UIViewController {
         // This is for swipe gesture
         //let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
         //swipe.direction = UISwipeGestureRecognizerDirection.down
+        //self.view.addGestureRecognizer(swipe)
         
         // This is for tap gesture
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapDetected(_:)))
