@@ -74,14 +74,35 @@ class ViewController: UIViewController {
         self.cardPicked = self.pickRandomCard(array: self.cards)
         self.mainAuthor.text = self.cardPicked.author
         self.mainText.text = self.cardPicked.text
+        self.mainImage.image = nil
         
         // Getting image from url
-        if self.cardPicked.image != nil {
+        if self.cardPicked.image != nil{
+            let session = URLSession(configuration: .default)
             let imageURL = URL(string: (self.cardPicked.image!))
-            let imageData = NSData(contentsOf: imageURL! as URL)
-            self.mainImage.image = UIImage(data: imageData! as Data)
-        } else {
-            self.mainImage.image = nil
+            let downloadPicTask = session.dataTask(with: imageURL!) { (data, response, error) in
+                if let e = error {
+                    print("Error downloading image: \(e)")
+                } else {
+                    if let res = response as? HTTPURLResponse {
+                        print("Downloaded picture with reponse code \(res.statusCode)")
+                        if let imageData = data {
+                            let image = UIImage(data: imageData)
+                            DispatchQueue.main.async {
+                                UIView.transition(with: self.mainImage, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+                                    self.mainImage.image = image
+                                }, completion: nil)
+                            }
+                        } else {
+                            print("couldn't get image: Image is nil")
+                        }
+                    } else {
+                        print("Couldn't get response code for some reason")
+                    }
+                }
+                
+            }
+            downloadPicTask.resume()
         }
         
         // Remove activity indicator
@@ -125,9 +146,12 @@ class ViewController: UIViewController {
         self.mainText.text = ""
         
         // This is for swipe gesture
-        //let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
-        //swipe.direction = UISwipeGestureRecognizerDirection.down
-        //self.view.addGestureRecognizer(swipe)
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipedDetected(_:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeLeft)
         
         // Add info button
         //let infoButton = UIButton(type: UIButtonType.infoDark)
@@ -137,8 +161,8 @@ class ViewController: UIViewController {
         
         
         // This is for tap gesture
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDetected(_:)))
-        self.view.addGestureRecognizer(tap)
+        // let tap = UITapGestureRecognizer(target: self, action: #selector(tapDetected(_:)))
+        // self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
