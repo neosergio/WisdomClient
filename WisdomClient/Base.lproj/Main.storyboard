@@ -23,13 +23,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EJ3-NM-M19">
-                                <rect key="frame" x="-0.5" y="-0.5" width="376" height="667.5"/>
+                                <rect key="frame" x="-1" y="-1" width="377" height="668"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EJ3-NM-M19" secondAttribute="height" multiplier="40:71" id="e5b-3A-F29"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lL2-ql-E8S">
-                                <rect key="frame" x="37.5" y="248.5" width="300" height="170.5"/>
+                                <rect key="frame" x="38" y="248.5" width="300" height="170.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="758" preservesSuperviewLayoutMargins="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h1e-0h-7Pg">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
@@ -58,6 +58,13 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbY-fe-9Lj">
+                                <rect key="frame" x="285" y="607" width="74" height="30"/>
+                                <state key="normal" title="Share this!"/>
+                                <connections>
+                                    <action selector="shareAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="naL-BP-Wga"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -66,7 +73,9 @@
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="centerX" secondItem="lL2-ql-E8S" secondAttribute="centerX" id="L8Q-17-KgM"/>
                             <constraint firstItem="BW6-2w-OMl" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="VOX-NE-GEX"/>
                             <constraint firstItem="BW6-2w-OMl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="aoM-Fo-K2U"/>
+                            <constraint firstItem="AbY-fe-9Lj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dsI-i2-ahB"/>
                             <constraint firstItem="EJ3-NM-M19" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="lIE-1T-A1P"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AbY-fe-9Lj" secondAttribute="bottom" constant="30" id="rRO-D1-U1r"/>
                             <constraint firstItem="lL2-ql-E8S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xLO-A2-dkw"/>
                         </constraints>
                     </view>
@@ -75,6 +84,7 @@
                         <outlet property="mainAuthor" destination="xOh-NR-TMH" id="iB9-Tg-fua"/>
                         <outlet property="mainImage" destination="EJ3-NM-M19" id="ASX-QV-Iuc"/>
                         <outlet property="mainText" destination="h1e-0h-7Pg" id="qJK-Is-ZTU"/>
+                        <outlet property="shareButton" destination="AbY-fe-9Lj" id="7Fc-xN-nqx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

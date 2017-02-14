@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mainAuthor: UILabel!
     @IBOutlet weak var mainText: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
+    @IBOutlet weak var shareButton: UIButton!
     
     typealias JSONStandar = [AnyObject]
     
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
                 self.parseData(JSONData: response.data!)
                 self.populateView()
                 self.infoButton.isHidden = false
+                self.shareButton.isHidden = false
                 self.view.isUserInteractionEnabled = true
                 // Remove activity indicator
                 self.activityBoxView.removeFromSuperview()
@@ -135,6 +137,23 @@ class ViewController: UIViewController {
         print("presed")
     }
     
+    @IBAction func shareAction(_ sender: Any) {
+        // text to share
+        let text = "\(self.mainText.text!) -\(self.mainAuthor.text!) via @Wisdom"
+        
+        // set up activity controller
+        let textToShare = [text]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [UIActivityType.airDrop]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addDownloadDataView()
@@ -142,6 +161,7 @@ class ViewController: UIViewController {
         let cardsURL = "\(Constants.mainURL)cards/"
         callAlamo(url: cardsURL)
         self.infoButton.isHidden = true
+        self.shareButton.isHidden = true
         self.mainAuthor.text = ""
         self.mainText.text = ""
         
