@@ -32,6 +32,9 @@ class ViewController: UIViewController {
                 self.parseData(JSONData: response.data!)
                 self.populateView()
                 self.infoButton.isHidden = false
+                self.view.isUserInteractionEnabled = true
+                // Remove activity indicator
+                self.activityBoxView.removeFromSuperview()
             case .failure(let error):
                 let alertController = UIAlertController(title: "Error", message: "Can't get information, please reopen application", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -104,13 +107,10 @@ class ViewController: UIViewController {
             }
             downloadPicTask.resume()
         }
-        
-        // Remove activity indicator
-        self.activityBoxView.removeFromSuperview()
-        
     }
     
     func addDownloadDataView() {
+        self.view.isUserInteractionEnabled = false
         activityBoxView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25, width: 175, height: 35))
         activityBoxView.alpha = 0.8
         activityBoxView.layer.cornerRadius = 10
