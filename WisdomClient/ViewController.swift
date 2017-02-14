@@ -139,7 +139,7 @@ class ViewController: UIViewController {
     
     @IBAction func shareAction(_ sender: Any) {
         // text to share
-        let text = "\(self.mainText.text!) -\(self.mainAuthor.text!) via @Wisdom"
+        let text = "\(self.mainText.text!) --\(self.mainAuthor.text!) via @Wisdom"
         
         // set up activity controller
         let textToShare = [text]
