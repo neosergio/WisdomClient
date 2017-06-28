@@ -10,18 +10,19 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var cards = [Card]()
     var cardPicked: Card!
     let swipeRecognizer = UISwipeGestureRecognizer()
     var activityBoxView = UIView()
+    let picker = UIImagePickerController()
     
     @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var mainAuthor: UILabel!
     @IBOutlet weak var mainText: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var mainToolbar: UIToolbar!
     
     typealias JSONStandar = [AnyObject]
     
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
                 self.parseData(JSONData: response.data!)
                 self.populateView()
                 self.infoButton.isHidden = false
-                self.shareButton.isHidden = false
+                self.mainToolbar.isHidden = false
                 self.view.isUserInteractionEnabled = true
                 // Remove activity indicator
                 self.activityBoxView.removeFromSuperview()
@@ -137,7 +138,34 @@ class ViewController: UIViewController {
         print("presed")
     }
     
-    @IBAction func shareAction(_ sender: Any) {
+    func noCamera() {
+        let alertVC = UIAlertController(title: "No Camera", message: "Sorry this device has no camera", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func shootPhoto(_ sender: UIBarButtonItem) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            picker.allowsEditing = false
+            picker.sourceType = UIImagePickerControllerSourceType.camera
+            picker.cameraCaptureMode = .photo
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true, completion: nil)
+        } else {
+            noCamera()
+        }
+    }
+    
+    @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func shareThis(_ sender: UIBarButtonItem) {
         // text to share
         let text = "\(self.mainText.text!) --\(self.mainAuthor.text!) via @GeekyWisdom"
         
@@ -151,17 +179,19 @@ class ViewController: UIViewController {
         
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
-        
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        picker.delegate = self
         addDownloadDataView()
         // Do any additional setup after loading the view, typically from a nib.
         let cardsURL = "\(Constants.mainURL)cards/"
         callAlamo(url: cardsURL)
         self.infoButton.isHidden = true
-        self.shareButton.isHidden = true
+        self.mainToolbar.isHidden = true
         self.mainAuthor.text = ""
         self.mainText.text = ""
         
@@ -189,7 +219,23 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    // MARK: - Delegates
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        mainImage.contentMode = .scaleToFill
+        mainImage.alpha = 0.4
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            mainImage.image = chosenImage
+        } else if let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            mainImage.image = chosenImage
+        } else {
+            print("something is wrong with image")
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
