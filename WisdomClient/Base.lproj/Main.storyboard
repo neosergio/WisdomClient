@@ -74,7 +74,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UUp-dF-hiW"/>
-                                    <barButtonItem systemItem="save" id="Vd5-a1-yDX"/>
+                                    <barButtonItem systemItem="save" id="Vd5-a1-yDX">
+                                        <connections>
+                                            <action selector="saveThisQuote:" destination="BYZ-38-t0r" id="9ad-2q-3kC"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="pzj-MD-1Cr"/>
                                     <barButtonItem systemItem="action" id="dYr-pr-M4I">
                                         <connections>

@@ -145,6 +145,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(alertVC, animated: true, completion: nil)
     }
     
+    func photoSaved() {
+        let alertVC = UIAlertController(title: "Photo Saved", message: "Photo has been saved on your camera roll", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    func screenShotMethod() {
+        let layer = UIApplication.shared.keyWindow?.layer
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions((layer?.frame.size)!, false, scale)
+        layer?.render(in: UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
+        photoSaved()
+        infoButton.isHidden = false
+        mainToolbar.isHidden = false
+    }
+    
     @IBAction func shootPhoto(_ sender: UIBarButtonItem) {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             picker.allowsEditing = false
@@ -164,6 +184,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(picker, animated: true, completion: nil)
     }
     
+    @IBAction func saveThisQuote(_ sender: UIBarButtonItem) {
+        infoButton.isHidden = true
+        mainToolbar.isHidden = true
+        screenShotMethod()
+    }
     
     @IBAction func shareThis(_ sender: UIBarButtonItem) {
         // text to share
