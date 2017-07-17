@@ -247,7 +247,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK: - Delegates
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        mainImage.contentMode = .scaleToFill
+        mainImage.contentMode = .scaleAspectFill
         mainImage.alpha = 0.4
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             mainImage.image = chosenImage
