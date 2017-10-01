@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return array[randomNumber]
     }
     
-    func swipedDetected(_ gesture: UIGestureRecognizer){
+    @objc func swipedDetected(_ gesture: UIGestureRecognizer){
        populateView()
     }
     
